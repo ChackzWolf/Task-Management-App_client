@@ -23,36 +23,36 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-6 text-[#f3fce9]">Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Task Summary</h2>
+        <div className="bg-[#a9e373] p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-[#2e4c1b]">Task Summary</h2>
           <div className="flex justify-around">
             <div className="text-center">
-              <p className="text-gray-600">Total Tasks</p>
+              <p className="text-[#2e4c1b]">Total Tasks</p>
               <p className="text-3xl font-bold">{tasks.length}</p>
             </div>
             <div className="text-center">
-              <p className="text-gray-600">Completed</p>
+              <p className="text-[#2e4c1b]">Completed</p>
               <p className="text-3xl font-bold text-green-600">{completedTasks}</p>
             </div>
             <div className="text-center">
-              <p className="text-gray-600">Pending</p>
+              <p className="text-[#2e4c1b]">Pending</p>
               <p className="text-3xl font-bold text-yellow-600">{pendingTasks}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Task Statistics</h2>
+        <div className="bg-[#a9e373] p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-[#2e4c1b]">Task Statistics</h2>
           <TaskStats />
         </div>
       </div>
       
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <div className="bg-[#a9e373] p-6 rounded-lg shadow-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Recent Tasks</h2>
+          <h2 className="text-xl font-semibold text-[#2e4c1b]">Recent Tasks</h2>
         </div>
         <TaskList   />
       </div>

@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-blue-600 text-white p-4">
+    <header className="bg-[#6bb82a] text-[#f3fce9] p-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold">
           <Link to="/">Task Manager</Link>
@@ -24,15 +24,15 @@ const Header: React.FC = () => {
               <span>Welcome, {user.username}</span>
               <button 
                 onClick={handleLogout}
-                className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100"
+                className="transition-all bg-[#e4f7d0] text-[#2e4c1b] px-4 py-2 rounded hover:bg-[#cbefa7]"
               >
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex gap-4">
-              <Link to="/login" className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100">Login</Link>
-              <Link to="/register" className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700">Register</Link>
+              <Link to="/login" className="bg-white text-[#2e4c1b] px-4 py-2 rounded hover:bg-blue-900">Login</Link>
+              <Link to="/register" className="bg-blue-900 text-[#f3fce9] px-4 py-2 rounded hover:bg-blue-900">Register</Link>
             </div>
           )}
         </nav>

@@ -71,7 +71,7 @@ const TaskStats: React.FC = () => {
     },
   };
 
-  // If there are no tasks, display a message
+  // If there are no tasks, I will display this message
   if (!tasks || tasks.length === 0) {
     return (
       <div className="flex justify-center items-center h-64 text-gray-500">
@@ -80,7 +80,7 @@ const TaskStats: React.FC = () => {
     );
   }
 
-  // Calculate priority statistics
+  // Calculating priority statistics
   const highPriority = tasks.filter(task => task.priority === TaskPriority.HIGH).length;
   const mediumPriority = tasks.filter(task => task.priority === TaskPriority.MEDIUM).length;
   const lowPriority = tasks.filter(task => task.priority === TaskPriority.LOW).length;
@@ -88,13 +88,13 @@ const TaskStats: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
-        <h3 className="text-lg font-semibold mb-2 text-center">Task Status</h3>
+        <h3 className="text-lg font-semibold mb-2 text-center text-[#2e4c1b]">Task Status</h3>
         <div className="h-64">
           <Pie data={chartData} options={options} />
         </div>
       </div>
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-center">Task Priority</h3>
+        <h3 className="text-lg font-semibold mb-4 text-center text-[#2e4c1b]">Task Priority</h3>
         <div className="space-y-2">
           <div className="flex justify-between items-center">
             <span className="text-red-600 font-medium">High Priority</span>

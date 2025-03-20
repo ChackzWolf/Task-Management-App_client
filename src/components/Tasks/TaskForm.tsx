@@ -171,14 +171,14 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-gray-700 border border-gray-300 rounded hover:bg-gray-100"
+              className="px-4 py-2 text-gray-700 border border-gray-300 rounded hover:bg-blue-900"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
+              className="px-4 py-2 bg-[#6bb82a] text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
             >
               {isSubmitting ? 'Saving...' : isEditing ? 'Update Task' : 'Add Task'}
             </button>

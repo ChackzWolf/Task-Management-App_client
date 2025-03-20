@@ -4,7 +4,7 @@ import { get, post, put, del } from './api';
 
 export const getTasks = async (): Promise<Task[]> => {
   try {
-    const response = await get('/tasks');
+    const response = await get('/api/tasks');
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to fetch tasks');
@@ -13,7 +13,7 @@ export const getTasks = async (): Promise<Task[]> => {
 
 export const getTaskById = async (id: string): Promise<Task> => {
   try {
-    const response = await get(`/tasks/${id}`);
+    const response = await get(`/api/tasks/${id}`);
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to fetch task');
@@ -22,7 +22,7 @@ export const getTaskById = async (id: string): Promise<Task> => {
 
 export const createTask = async (task: Omit<Task, '_id'>): Promise<Task> => {
   try {
-    const response = await post('/tasks', task);
+    const response = await post('/api/tasks', task);
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to create task');
@@ -31,7 +31,7 @@ export const createTask = async (task: Omit<Task, '_id'>): Promise<Task> => {
 
 export const updateTask = async (id: string, task: Partial<Task>): Promise<Task> => {
   try {
-    const response = await put(`/tasks/${id}`, task);
+    const response = await put(`/api/tasks/${id}`, task);
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to update task');
@@ -40,7 +40,7 @@ export const updateTask = async (id: string, task: Partial<Task>): Promise<Task>
 
 export const deleteTask = async (id: string): Promise<void> => {
   try {
-    await del(`/tasks/${id}`);
+    await del(`/api/tasks/${id}`);
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to delete task');
   }
@@ -48,7 +48,7 @@ export const deleteTask = async (id: string): Promise<void> => {
 
 export const getTaskStats = async (): Promise<TaskStats> => {
   try {
-    const response = await get('/tasks/stats');
+    const response = await get('/api/tasks/stats');
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Failed to fetch task statistics');

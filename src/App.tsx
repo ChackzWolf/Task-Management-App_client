@@ -9,9 +9,8 @@ import TaskList from './components/Tasks/TaskList';
 import Header from './components/Layout/Header';
 import Sidebar from './components/Layout/Sidebar';
 import TaskStats from './components/Visualization/TaskStats';
-import './App.css';
 
-// Protected route component
+
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -20,13 +19,21 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   return <>{children}</>;
 };
 
+const AuthRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    return <Navigate to="/dashboard" />;
+  }
+  return <>{children}</>;
+};
+
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-1">
+      <div className="flex flex-1 bg-[#35591b]">
         <Sidebar />
-        <main className="flex-1 bg-gray-50">
+        <main className="flex-1 bg-[#152a09]">
           {children}
         </main>
       </div>
@@ -40,8 +47,19 @@ function App() {
       <AuthProvider>
         <TaskProvider>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+
+            
+            <Route path="/login" element={
+              <AuthRoute>
+              <Login />
+              </AuthRoute>
+            } />
+            <Route path="/register" element={
+              <AuthRoute>
+              <Register />
+              </AuthRoute>
+            } />
+
             <Route 
               path="/" 
               element={
@@ -66,7 +84,7 @@ function App() {
                 <ProtectedRoute>
                   <MainLayout>
                     <div className="p-6">
-                      <h1 className="text-2xl font-bold mb-6">Tasks</h1>
+                      <h1 className="text-2xl font-bold mb-6 text-[#f3fce9]">Tasks</h1>
                       <TaskList />
                     </div>
                   </MainLayout>
@@ -79,8 +97,8 @@ function App() {
                 <ProtectedRoute>
                   <MainLayout>
                     <div className="p-6">
-                      <h1 className="text-2xl font-bold mb-6">Task Statistics</h1>
-                      <div className="bg-white p-6 rounded-lg shadow-md">
+                      <h1 className="text-2xl font-bold mb-6 text-[#f3fce9]">Task Statistics</h1>
+                      <div className="bg-[#a9e373] p-6 rounded-lg shadow-md">
                         <TaskStats />
                       </div>
                     </div>

@@ -1,12 +1,12 @@
-// src/components/Tasks/TaskList.tsx
 import React, { useState, useEffect } from 'react';
-import { Task, TaskStatus, TaskPriority } from '../../models/Task';
+import { TaskStatus, TaskPriority } from '../../models/Task';
 import { useTask } from '../../context/TaskContext';
 import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
 
 const TaskList: React.FC = () => {
   const { tasks, isLoading, error, refreshTasks } = useTask();
+
   const [showForm, setShowForm] = useState(false);
   const [filter, setFilter] = useState<{
     status: TaskStatus | 'ALL';
@@ -18,9 +18,14 @@ const TaskList: React.FC = () => {
     search: '',
   });
 
+
+
+
   useEffect(() => {
     refreshTasks();
   }, []);
+
+
 
   const handleAddClick = () => {
     setShowForm(true);
@@ -62,12 +67,12 @@ const TaskList: React.FC = () => {
   });
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-[#a9e373] rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">My Tasks</h2>
+        <h2 className="text-2xl font-bold text-[#2e4c1b]">My Tasks</h2>
         <button
           onClick={handleAddClick}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          className="bg-[#6bb82a] text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
           Add New Task
         </button>
@@ -76,12 +81,12 @@ const TaskList: React.FC = () => {
       {/* Filters */}
       <div className="mb-6 flex flex-wrap gap-4">
         <div className="flex-1 min-w-[150px]">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+          <label className="block text-sm font-medium text-[#35591b]  mb-1">Status</label>
           <select
             name="status"
             value={filter.status}
             onChange={handleFilterChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-[#92d655] rounded "
           >
             <option value="ALL">All Statuses</option>
             <option value={TaskStatus.TODO}>To Do</option>
@@ -91,12 +96,12 @@ const TaskList: React.FC = () => {
         </div>
 
         <div className="flex-1 min-w-[150px]">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+          <label className="block text-sm font-medium text-[#35591b] mb-1">Priority</label>
           <select
             name="priority"
             value={filter.priority}
             onChange={handleFilterChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-[#92d655] rounded"
           >
             <option value="ALL">All Priorities</option>
             <option value={TaskPriority.LOW}>Low</option>
@@ -106,34 +111,34 @@ const TaskList: React.FC = () => {
         </div>
 
         <div className="flex-1 min-w-[200px]">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Search</label>
+          <label className="block text-sm font-medium text-[#35591b] mb-1">Search</label>
           <input
             type="text"
             name="search"
             value={filter.search}
             onChange={handleFilterChange}
             placeholder="Search tasks..."
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-[#92d655] text-[#35591b] rounded"
           />
         </div>
       </div>
 
       {isLoading ? (
         <div className="flex justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-950"></div>
         </div>
       ) : error ? (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
           {error}
         </div>
       ) : filteredTasks.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
+        <div className="text-center py-8 text-green-500">
           {tasks.length === 0
             ? "You don't have any tasks yet. Click 'Add New Task' to get started."
             : "No tasks match your filters."}
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           {filteredTasks.map((task) => (
             <TaskItem key={task._id} task={task} />
           ))}

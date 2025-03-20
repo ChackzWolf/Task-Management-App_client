@@ -4,7 +4,7 @@ import { post } from './api';
 
 export const login = async (credentials: AuthCredentials): Promise<AuthResponse> => {
   try {
-    const response = await post('/auth/login', credentials, false);
+    const response = await post('/api/auth/login', credentials, false);
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Login failed');
@@ -19,7 +19,7 @@ export const register = async (userData: RegisterRequest): Promise<AuthResponse>
   try {
     // Remove confirmPassword as it's not needed on the server
     const { confirmPassword, ...registrationData } = userData;
-    const response = await post('/auth/register', registrationData, false);
+    const response = await post('/api/auth/register', registrationData, false);
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Registration failed');
@@ -33,7 +33,7 @@ export const logout = (): void => {
 
 export const validateToken = async (): Promise<boolean> => {
   try {
-    await post('/auth/validate-token', {});
+    await post('/api/auth/validate-token', {});
     return true;
   } catch (error) {
     return false;

@@ -23,7 +23,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
       case TaskPriority.LOW:
         return 'bg-green-100 text-green-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-blue-900 text-gray-800';
     }
   };
 
@@ -34,9 +34,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
       case TaskStatus.IN_PROGRESS:
         return 'bg-blue-100 text-blue-800';
       case TaskStatus.TODO: 
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-blue-500 text-gray-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-blue-500 text-gray-800';
     }
   };
 
@@ -78,10 +78,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   }
 
   return (
-    <div className="border rounded-lg p-4 bg-white shadow-sm">
+    <div className="border rounded-lg p-4 bg-[#3e701b] shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-lg font-semibold text-[#e4f7d0]">
             {task.title}
             {isPastDue(task.dueDate) && task.status !== TaskStatus.COMPLETED && (
               <span className="ml-2 text-sm font-medium px-2 py-1 rounded bg-red-100 text-red-800">
@@ -89,7 +89,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               </span>
             )}
           </h3>
-          <p className="text-gray-600 mt-1">{task.description}</p>
+          <p className="text-[#f3fce9] mt-1">{task.description}</p>
           
           <div className="flex flex-wrap gap-2 mt-3">
             <span className={`text-xs font-medium px-2 py-1 rounded ${getPriorityColor(task.priority)}`}>
@@ -112,7 +112,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               <select
                 value={task.status}
                 onChange={handleStatusChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm text-[#f3fce9]"
               >
                 <option value={TaskStatus.TODO}>To Do</option>
                 <option value={TaskStatus.IN_PROGRESS}>In Progress</option>
@@ -120,7 +120,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               </select>
               <button
                 onClick={handleEditClick}
-                className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+                className="bg-[#6bb82a] text-white px-3 py-1 rounded text-sm hover:bg-green-500"
               >
                 Edit
               </button>
