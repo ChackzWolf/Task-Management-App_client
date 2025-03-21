@@ -1,7 +1,7 @@
 // src/context/TaskContext.tsx
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Task, TaskStats } from '../models/Task';
-import { getTasks, createTask, updateTask, deleteTask, getTaskStats } from '../services/tastService';
+import { getTasks, createTask, updateTask, deleteTask} from '../services/tastService';
 import { useAuth } from './AuthContext';
 import io from 'socket.io-client';
 
