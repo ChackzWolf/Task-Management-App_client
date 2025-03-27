@@ -65,7 +65,7 @@ const TaskList: React.FC = () => {
 
     return true;
   });
-
+console.log(filteredTasks.length, 'fitlerd task length')
   return (
     <div className="bg-[#a9e373] rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-6">
@@ -123,7 +123,7 @@ const TaskList: React.FC = () => {
         </div>
       </div>
 
-      {isLoading ? (
+      {isLoading && filteredTasks.length === 0 ? (
         <div className="flex justify-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-950"></div>
         </div>
@@ -137,11 +137,16 @@ const TaskList: React.FC = () => {
             ? "You don't have any tasks yet. Click 'Add New Task' to get started."
             : "No tasks match your filters."}
         </div>
-      ) : (
+      ) : ( 
         <div className="space-y-4 ">
           {filteredTasks.map((task) => (
             <TaskItem key={task._id} task={task} />
           ))}
+          {isLoading && (
+                    <div className="flex justify-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-950"></div>
+                  </div>
+          )}
         </div>
       )}
 
