@@ -65,7 +65,7 @@ const TaskList: React.FC = () => {
 
     return true;
   });
-console.log(filteredTasks.length, 'fitlerd task length')
+console.log(filteredTasks.length, 'fitlerd task length', isLoading, 'isLoadin')
   return (
     <div className="bg-[#a9e373] rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-6">
