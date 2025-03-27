@@ -123,7 +123,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     const refreshTasks = async () => {
         if (!isAuthenticated) return;
 
-        // setIsLoading(true);
+        setIsLoading(true);
         setError(null);
         try {
             const fetchedTasks = await getTasks();
